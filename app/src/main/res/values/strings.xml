@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">MoViews</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="title_information">Information</string>
+
+    <string name="text_trending_now">Trending Now</string>
+    <string name="text_upcoming">Upcoming</string>
+    <string name="text_now_playing">Now Playing</string>
+    <string name="text_top_searches">Top Searches</string>
+    <string name="text_enter_the_name_of_movie">Enter the name of movie…</string>
+    <string name="text_your_favorites_movie">Your favorites movie</string>
+    <string name="text_notification">Notification</string>
+    <string name="text_info">App made by Manh Hung trainee Android</string>
+    <string name="text_imageBack">imageBack</string>
 </resources>

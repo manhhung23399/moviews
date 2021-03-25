@@ -11,7 +11,7 @@ jobs:
       # This is Android review pull request box 
     ROOM_ID: "96370317"
       # Insert the chatwork accounts which you want to mention when the pull request was verified
-    MEMBERS: "[To:208454867] Tran Manh Hung"
+    MEMBERS: "[To:5483017] Tran Manh Hung"
   cache:
   - key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
     paths:
