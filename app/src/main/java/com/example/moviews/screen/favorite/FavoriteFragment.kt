@@ -11,4 +11,10 @@ class FavoriteFragment : BaseFragment() {
     override fun initComponents() {
         TODO("Not yet implemented")
     }
+
+    companion object {
+        private var instance: FavoriteFragment? = null
+        fun newInstance(): FavoriteFragment = instance ?: FavoriteFragment()
+            .also { instance = it }
+    }
 }
