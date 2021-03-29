@@ -13,10 +13,25 @@
             android:id="@+id/viewPagerBanner"
             android:layout_width="0dp"
             android:layout_height="@dimen/dp_220"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabIndicator"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black"
+            app:layout_constraintBottom_toTopOf="@+id/textTrendingNow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewPagerBanner"
+            app:layout_constraintVertical_bias="0.0"
+            app:tabBackground="@drawable/indicator_selector"
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp" />
 
         <TextView
             android:id="@+id/textTrendingNow"
@@ -28,7 +43,7 @@
             android:textColor="@android:color/white"
             android:textSize="@dimen/sp_22"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/viewPagerBanner" />
+            app:layout_constraintTop_toBottomOf="@id/tabIndicator" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerTrendingNow"
@@ -36,6 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_10"
             android:background="@color/color_dark_gray_light2"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textTrendingNow" />
@@ -58,6 +75,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_10"
             android:background="@color/color_dark_gray_light2"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textUpcoming" />
@@ -80,6 +99,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_10"
             android:background="@color/color_dark_gray_light2"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textNowPlaying" />
