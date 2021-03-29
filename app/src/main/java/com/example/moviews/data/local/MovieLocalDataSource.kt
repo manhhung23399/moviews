@@ -26,4 +26,10 @@ class MovieLocalDataSource private constructor(
             movieDao.getAllMovies()
         }.execute()
     }
+
+    companion object {
+        private var instance: MovieLocalDataSource? = null
+        fun getInstance(movieDao: MovieDao) =
+            instance ?: MovieLocalDataSource(movieDao).also { instance = it }
+    }
 }

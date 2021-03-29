@@ -1,6 +1,5 @@
 package com.example.moviews.data.local.dao
 
-import android.database.sqlite.SQLiteOpenHelper
 import com.example.moviews.data.model.Movie
 import com.example.moviews.data.local.database.AppDatabase
 import com.example.moviews.data.model.Movie.Companion.MOVIE_ID
