@@ -7,7 +7,8 @@ import com.example.moviews.base.BaseFragment
 import com.example.moviews.data.model.Movie
 import com.example.moviews.screen.home.adapter.MovieAdapter
 import com.example.moviews.screen.home.adapter.ViewPagerAdapter
-import com.example.moviews.utils.RepositoryUtils
+import com.example.moviews.repository.RepositoryUtils
+import com.example.moviews.screen.moviedetail.MovieDetailFragment
 import com.example.moviews.utils.addFragment
 import com.example.moviews.utils.showToast
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -78,11 +79,11 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     private fun onClickItemRecycler(movie: Movie) {
-        addFragment(movie.id)
+        addFragment(MovieDetailFragment.getInstance(movie.id))
     }
 
     private fun onClickItemViewPager(movie: Movie) {
-        addFragment(movie.id)
+        addFragment(MovieDetailFragment.getInstance(movie.id))
     }
 
     companion object {

@@ -1,5 +1,6 @@
 package com.example.moviews.data.remote
 
+import com.example.moviews.data.model.Genre
 import com.example.moviews.data.model.Movie
 import com.example.moviews.utils.Constant
 import org.json.JSONException
@@ -53,6 +54,7 @@ class ParseDataWithJson {
             jsonObject?.let {
                 when (keyEntity) {
                     Movie.MOVIE_RESULTS -> return Movie(it)
+                    Genre.GENRES -> return Genre(it)
                     else -> null
                 }
             }
