@@ -1,12 +1,11 @@
-package com.example.moviews.screen.search
+package com.example.moviews.screen.moviedetail
 
 import com.example.moviews.R
 import com.example.moviews.base.BaseFragment
 
-class SearchFragment : BaseFragment() {
-
+class MovieDetailFragment(idMovie: Int) : BaseFragment() {
     override val layoutID: Int
-        get() = R.layout.fragment_search
+        get() = R.layout.fragment_movie_detail
 
     override fun initViews() {
         TODO("Not yet implemented")
@@ -17,8 +16,6 @@ class SearchFragment : BaseFragment() {
     }
 
     companion object {
-        private var instance: SearchFragment? = null
-        fun newInstance(): SearchFragment = instance ?: SearchFragment()
-            .also { instance = it }
+        fun getInstance(idMovie: Int) = MovieDetailFragment(idMovie)
     }
 }

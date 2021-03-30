@@ -13,10 +13,12 @@ abstract class BaseFragment : Fragment() {
     protected abstract val layoutID: Int
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? = inflater.inflate(layoutID, container, false)
 
-    protected abstract fun initComponents()
+    protected abstract fun initViews()
+
+    protected abstract fun initData()
 }

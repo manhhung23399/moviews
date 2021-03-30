@@ -8,7 +8,11 @@ class FavoriteFragment : BaseFragment() {
     override val layoutID: Int
         get() = R.layout.fragment_favorite
 
-    override fun initComponents() {
+    override fun initViews() {
+        TODO("Not yet implemented")
+    }
+
+    override fun initData() {
         TODO("Not yet implemented")
     }
 

@@ -29,8 +29,8 @@ class AppDatabase private constructor(
                     "${Movie.MOVIE_ID} INTEGER PRIMARY KEY, " +
                     "${Movie.MOVIE_TITLE} TEXT, " +
                     "${Movie.MOVIE_POSTER} TEXT, " +
-                    "${Movie.MOVIE_VOTE} DOUBLE)"
-
+                    "${Movie.MOVIE_VOTE} DOUBLE , " +
+                    "${Movie.MOVIE_BACKDROP} TEXT)"
 
         private const val DROP_MOVIE_TABLE = "DROP TABLE IF EXISTS ${Movie.MOVIE_TABLE}"
 
