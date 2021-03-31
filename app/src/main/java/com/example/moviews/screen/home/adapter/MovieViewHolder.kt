@@ -2,7 +2,6 @@ package com.example.moviews.screen.home.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.moviews.data.model.Movie
 import com.example.moviews.utils.Constant
 import com.example.moviews.utils.loadImage
@@ -17,7 +16,7 @@ class MovieViewHolder(
 
     init {
         itemView.setOnClickListener {
-            movie?.let { onClickItem(it) }
+            movie?.let(onClickItem)
         }
     }
 
@@ -26,8 +25,7 @@ class MovieViewHolder(
         itemView.apply {
             textTitleMovie.text = movie.title
             textVote.text = movie.vote.toString()
-            imageMovie.loadImage(Constant.BASE_URL_IMAGE+movie.poster,imageMovie)
+            imageMovie.loadImage(Constant.BASE_URL_IMAGE + movie.poster)
         }
     }
-
 }

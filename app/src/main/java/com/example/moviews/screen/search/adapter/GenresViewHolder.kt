@@ -13,7 +13,7 @@ class GenresViewHolder(
 
     init {
         itemView.setOnClickListener {
-            genre?.let { onClickItem(it) }
+            genre?.let(onClickItem)
         }
     }
 

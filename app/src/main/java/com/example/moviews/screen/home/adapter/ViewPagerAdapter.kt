@@ -22,7 +22,7 @@ class ViewPagerAdapter(
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val view =
             LayoutInflater.from(container.context).inflate(R.layout.item_slide, container, false)
-        view.imageSlide.loadImage(Constant.BASE_URL_IMAGE + movies[position].backdrop,view.imageSlide)
+        view.imageSlide.loadImage(Constant.BASE_URL_IMAGE + movies[position].backdrop)
         view.textSlide.text = movies[position].title
         view.setOnClickListener { onClickItem(movies[position]) }
         container.addView(view, 0)
