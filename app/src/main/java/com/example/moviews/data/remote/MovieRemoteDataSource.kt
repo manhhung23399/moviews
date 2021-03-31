@@ -9,43 +9,47 @@ import com.example.moviews.utils.Constant
 
 class MovieRemoteDataSource : MovieDataSource.Remote {
 
-    private fun builUrl(paths: List<String>): String {
-        val builder = Uri.Builder()
-        builder.scheme(Constant.BASE_HTTPS)
-            .authority(Constant.BASE_AUTHORITY)
-            .appendPath(Constant.BASE_VERSION)
-            .apply {
-                paths.forEach {
-                    this.appendPath(it)
-                }
+    private fun buildUrl(paths: List<String>) = Uri.Builder()
+        .scheme(Constant.BASE_HTTPS)
+        .authority(Constant.BASE_AUTHORITY)
+        .appendPath(Constant.BASE_VERSION)
+        .apply {
+            paths.forEach {
+                this.appendPath(it)
             }
-            .appendQueryParameter(Constant.BASE_KEY, BuildConfig.API_KEY)
-        return builder.toString()
-    }
+        }
+        .appendQueryParameter(Constant.BASE_KEY, BuildConfig.API_KEY)
+        .toString()
 
-    private var urlTrending = builUrl(
+    private var urlTrending = buildUrl(
         listOf(
             Constant.BASE_TRENDING,
             Constant.BASE_MOVIE,
             Constant.BASE_TRENDING_TIME
         )
     )
-    private var urlUpcoming = builUrl(
+    private var urlUpcoming = buildUrl(
         listOf(
             Constant.BASE_MOVIE,
             Constant.BASE_UPCOMING
         )
     )
-    private var urlPopular = builUrl(
+    private var urlPopular = buildUrl(
         listOf(
             Constant.BASE_MOVIE,
             Constant.BASE_POPULAR
         )
     )
-    private var urlNowPlaying = builUrl(
+    private var urlNowPlaying = buildUrl(
         listOf(
             Constant.BASE_MOVIE,
             Constant.BASE_NOW_PLAYING
+        )
+    )
+    private var urlTopSearches = buildUrl(
+        listOf(
+            Constant.BASE_MOVIE,
+            Constant.BASE_TOP_RATE
         )
     )
 
@@ -63,6 +67,10 @@ class MovieRemoteDataSource : MovieDataSource.Remote {
 
     override fun getPopularMovie(callback: OnLoadDataCallback<MutableList<Movie>>) {
         GetJsonFromUrl(Movie.MOVIE_RESULTS, callback).execute(urlPopular)
+    }
+
+    override fun getTopSearchMovie(callback: OnLoadDataCallback<MutableList<Movie>>) {
+        GetJsonFromUrl(Movie.MOVIE_RESULTS, callback).execute(urlTopSearches)
     }
 
     companion object {

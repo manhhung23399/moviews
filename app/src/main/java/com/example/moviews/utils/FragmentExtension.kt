@@ -6,9 +6,8 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.moviews.R
 import com.example.moviews.screen.moviedetail.MovieDetailFragment
 
-fun Fragment.addFragment(idMovie: Int) {
+fun Fragment.addFragment(fragment: Fragment) {
     activity?.run {
-        val fragment = MovieDetailFragment.getInstance(idMovie)
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .replace(R.id.frameContainer, fragment)

@@ -14,5 +14,6 @@ interface MovieDataSource {
         fun getUpcomingMovie(callback: OnLoadDataCallback<MutableList<Movie>>)
         fun getNowPlayingMovie(callback: OnLoadDataCallback<MutableList<Movie>>)
         fun getPopularMovie(callback: OnLoadDataCallback<MutableList<Movie>>)
+        fun getTopSearchMovie(callback: OnLoadDataCallback<MutableList<Movie>>)
     }
 }

@@ -14,4 +14,9 @@ object Constant {
     const val BASE_URL_IMAGE = "https://image.tmdb.org/t/p/w500"
     const val BASE_TIME_OUT = 15000
     const val BASE_METHOD_GET = "GET"
+    const val BASE_GENRES="genre"
+    const val BASE_LIST="list"
+    const val BASE_TOP_RATE="top_rated"
+    const val BASE_SEARCH="search"
+    const val BASE_QUERY="&query="
 }
