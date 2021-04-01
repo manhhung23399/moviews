@@ -2,8 +2,6 @@ package com.example.moviews.screen.search
 
 import android.app.Activity
 import android.content.Context
-import android.os.Bundle
-import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.example.moviews.R
 import com.example.moviews.base.BaseFragment
@@ -25,13 +23,6 @@ class SearchFragment : BaseFragment(), SearchContract.View {
     override val layoutID: Int
         get() = R.layout.fragment_search
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initData()
-        initViews()
-        sendName()
-    }
-
     override fun initViews() {
         recyclerViewTopSearch.apply {
             setHasFixedSize(true)
@@ -49,6 +40,10 @@ class SearchFragment : BaseFragment(), SearchContract.View {
             presenter = SearchPresenter(this, searchRepository)
         }
         presenter?.onStart()
+    }
+
+    override fun initEvent() {
+        initActions()
     }
 
     override fun showGenres(genres: MutableList<Genre>) {
@@ -75,7 +70,7 @@ class SearchFragment : BaseFragment(), SearchContract.View {
         addFragment(GenresFragment.getInstance(genre.id))
     }
 
-    private fun sendName() {
+    private fun initActions() {
         imageSearch.setOnClickListener {
             val name = editSearch.text.toString()
             presenter?.searchMovie(name)

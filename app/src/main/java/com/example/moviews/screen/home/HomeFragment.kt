@@ -1,7 +1,5 @@
 package com.example.moviews.screen.home
 
-import android.os.Bundle
-import android.view.View
 import com.example.moviews.R
 import com.example.moviews.base.BaseFragment
 import com.example.moviews.data.model.Movie
@@ -22,12 +20,6 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     private val viewPageAdapter = ViewPagerAdapter(this::onClickItemViewPager)
     override val layoutID: Int
         get() = R.layout.fragment_home
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initData()
-        initViews()
-    }
 
     override fun initViews() {
         recyclerTrendingNow.apply {
@@ -55,6 +47,9 @@ class HomeFragment : BaseFragment(), HomeContract.View {
             presenter = HomePresenter(this, movieRepository)
         }
         presenter?.onStart()
+    }
+
+    override fun initEvent() {
     }
 
     override fun showMoviesNowPlaying(movies: MutableList<Movie>) {

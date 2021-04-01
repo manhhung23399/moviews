@@ -1,7 +1,5 @@
 package com.example.moviews.screen.favorite
 
-import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.example.moviews.R
 import com.example.moviews.base.BaseFragment
@@ -22,13 +20,6 @@ class FavoriteFragment : BaseFragment(), FavoriteContract.View {
     override val layoutID: Int
         get() = R.layout.fragment_favorite
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initData()
-        initViews()
-        initActions()
-    }
-
     override fun initViews() {
         recyclerFavorite.apply {
             setHasFixedSize(true)
@@ -42,6 +33,10 @@ class FavoriteFragment : BaseFragment(), FavoriteContract.View {
             presenter = FavoritePresenter(this, movieRepository)
         }
         presenter?.onStart()
+    }
+
+    override fun initEvent() {
+        initActions()
     }
 
     override fun showFavoriteMovies(favoriteMovies: MutableList<Movie>) {
