@@ -16,7 +16,7 @@ class TopSearchViewHolder(
 
     init {
         itemView.setOnClickListener {
-            movie?.let { onClickItem(it) }
+            movie?.let(onClickItem)
         }
     }
 
@@ -24,7 +24,7 @@ class TopSearchViewHolder(
         this.movie = movie
         itemView.apply {
             textTitleMovieSearch.text = movie.title
-            imageMovieSearch.loadImage(Constant.BASE_URL_IMAGE + movie.backdrop, imageMovieSearch)
+            imageMovieSearch.loadImage(Constant.BASE_URL_IMAGE + movie.backdrop)
         }
     }
 }

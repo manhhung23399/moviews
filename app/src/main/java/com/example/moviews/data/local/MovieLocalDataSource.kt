@@ -24,7 +24,7 @@ class MovieLocalDataSource private constructor(
     override fun getAllMovies(callback: OnLoadDataCallback<MutableList<Movie>>) {
         LocalAsyncTask<Unit, MutableList<Movie>>(callback) {
             movieDao.getAllMovies()
-        }.execute()
+        }.execute(Unit)
     }
 
     companion object {

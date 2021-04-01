@@ -15,9 +15,11 @@ class SearchRepository private constructor(
     fun getTopSearches(callback: OnLoadDataCallback<MutableList<Movie>>) {
         remote.getTopSearches(callback)
     }
-    fun searchMovie(name:String,callback: OnLoadDataCallback<MutableList<Movie>>){
-        remote.searchMovie(name,callback)
+
+    fun searchMovie(name: String, callback: OnLoadDataCallback<MutableList<Movie>>) {
+        remote.searchMovie(name, callback)
     }
+
     companion object {
         private var instance: SearchRepository? = null
         fun getInstance(remote: SearchDataSource.Remote): SearchRepository =

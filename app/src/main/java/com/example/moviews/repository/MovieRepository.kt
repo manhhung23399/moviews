@@ -18,6 +18,14 @@ class MovieRepository private constructor(
         }
     }
 
+    fun getFavoriteMovies(callback: OnLoadDataCallback<MutableList<Movie>>) {
+        local.getAllMovies(callback)
+    }
+
+    fun deleteMovies(idMovie: String, callback: OnLoadDataCallback<Boolean>) {
+        local.deleteMovie(idMovie, callback)
+    }
+
     companion object {
         private var instance: MovieRepository? = null
         fun getInstance(

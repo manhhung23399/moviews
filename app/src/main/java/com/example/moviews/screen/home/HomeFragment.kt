@@ -57,7 +57,6 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         presenter?.onStart()
     }
 
-
     override fun showMoviesNowPlaying(movies: MutableList<Movie>) {
         nowPlayingAdapter.updateData(movies)
     }
