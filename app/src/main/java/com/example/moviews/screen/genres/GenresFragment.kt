@@ -9,11 +9,12 @@ class GenresFragment(idGenres: Int) : BaseFragment() {
         get() = R.layout.fragment_genres
 
     override fun initViews() {
-        TODO("Not yet implemented")
     }
 
     override fun initData() {
-        TODO("Not yet implemented")
+    }
+
+    override fun initEvent() {
     }
 
     companion object {

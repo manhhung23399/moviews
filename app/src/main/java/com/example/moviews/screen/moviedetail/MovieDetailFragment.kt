@@ -8,11 +8,12 @@ class MovieDetailFragment(idMovie: Int) : BaseFragment() {
         get() = R.layout.fragment_movie_detail
 
     override fun initViews() {
-        TODO("Not yet implemented")
     }
 
     override fun initData() {
-        TODO("Not yet implemented")
+    }
+
+    override fun initEvent() {
     }
 
     companion object {

@@ -2,6 +2,7 @@ package com.example.moviews.screen.information
 
 import com.example.moviews.R
 import com.example.moviews.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_information.*
 
 class InformationFragment : BaseFragment() {
 
@@ -9,11 +10,17 @@ class InformationFragment : BaseFragment() {
         get() = R.layout.fragment_information
 
     override fun initViews() {
-        TODO("Not yet implemented")
     }
 
     override fun initData() {
-        TODO("Not yet implemented")
+    }
+
+    override fun initEvent() {
+        switchNotification.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+            } else {
+            }
+        }
     }
 
     companion object {
