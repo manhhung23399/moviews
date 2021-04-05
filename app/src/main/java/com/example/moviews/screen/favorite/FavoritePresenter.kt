@@ -15,7 +15,7 @@ class FavoritePresenter(
                 view.showFavoriteMovies(data)
             }
 
-            override fun onError(e: Exception) {
+            override fun onError(e: Exception?) {
                 view.showError(e)
             }
         })
@@ -26,7 +26,7 @@ class FavoritePresenter(
             override fun onSuccess(data: Boolean) {
             }
 
-            override fun onError(e: Exception) {
+            override fun onError(e: Exception?) {
                 view.showError(e)
             }
         })

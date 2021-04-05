@@ -11,6 +11,7 @@
         android:id="@+id/imageCast"
         android:layout_width="@dimen/dp_140"
         android:layout_height="@dimen/dp_120"
+        android:scaleType="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -15,7 +15,7 @@ import java.lang.Exception
 class FavoriteFragment : BaseFragment(), FavoriteContract.View {
 
     private var presenter: FavoritePresenter? = null
-    private val favoriteAdapter = FavoriteAdapter(this::onClickItem, this::onClickDetele)
+    private val favoriteAdapter = FavoriteAdapter(this::onClickItem, this::onClickDelete)
 
     override val layoutID: Int
         get() = R.layout.fragment_favorite
@@ -43,7 +43,7 @@ class FavoriteFragment : BaseFragment(), FavoriteContract.View {
         favoriteAdapter.updateData(favoriteMovies)
     }
 
-    override fun showError(exception: Exception) {
+    override fun showError(exception: Exception?) {
         showToast(exception.toString())
     }
 
@@ -51,7 +51,7 @@ class FavoriteFragment : BaseFragment(), FavoriteContract.View {
         addFragment(MovieDetailFragment.getInstance(movie.id))
     }
 
-    private fun onClickDetele(movie: Movie) {
+    private fun onClickDelete(movie: Movie) {
         activity?.let {
             AlertDialog.Builder(it).apply {
                 setMessage(R.string.message_dialog)

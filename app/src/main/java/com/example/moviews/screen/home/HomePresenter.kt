@@ -21,7 +21,7 @@ class HomePresenter(
                 }
             }
 
-            override fun onError(e: Exception) {
+            override fun onError(e: Exception?) {
                 view.showError(e)
             }
         })

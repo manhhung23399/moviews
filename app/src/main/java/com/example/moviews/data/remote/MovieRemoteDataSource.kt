@@ -6,6 +6,8 @@ import com.example.moviews.data.MovieDataSource
 import com.example.moviews.data.OnLoadDataCallback
 import com.example.moviews.data.model.Movie
 import com.example.moviews.utils.Constant
+import com.example.moviews.utils.parseJsonToObject
+import org.json.JSONObject
 
 class MovieRemoteDataSource : MovieDataSource.Remote {
 
@@ -53,24 +55,37 @@ class MovieRemoteDataSource : MovieDataSource.Remote {
         )
     )
 
+    private fun getMovie(url: String): MutableList<Movie> =
+        JSONObject(readApi(url)).getString(Movie.MOVIE_RESULTS).parseJsonToObject()
+
     override fun getTrendingMovie(callback: OnLoadDataCallback<MutableList<Movie>>) {
-        GetJsonFromUrl(Movie.MOVIE_RESULTS, callback).execute(urlTrending)
+        RemoteAsyncTask(callback) {
+            getMovie(urlTrending)
+        }.execute()
     }
 
     override fun getUpcomingMovie(callback: OnLoadDataCallback<MutableList<Movie>>) {
-        GetJsonFromUrl(Movie.MOVIE_RESULTS, callback).execute(urlUpcoming)
+        RemoteAsyncTask(callback) {
+            getMovie(urlUpcoming)
+        }.execute()
     }
 
     override fun getNowPlayingMovie(callback: OnLoadDataCallback<MutableList<Movie>>) {
-        GetJsonFromUrl(Movie.MOVIE_RESULTS, callback).execute(urlNowPlaying)
+        RemoteAsyncTask(callback) {
+            getMovie(urlNowPlaying)
+        }.execute()
     }
 
     override fun getPopularMovie(callback: OnLoadDataCallback<MutableList<Movie>>) {
-        GetJsonFromUrl(Movie.MOVIE_RESULTS, callback).execute(urlPopular)
+        RemoteAsyncTask(callback) {
+            getMovie(urlPopular)
+        }.execute()
     }
 
     override fun getTopSearchMovie(callback: OnLoadDataCallback<MutableList<Movie>>) {
-        GetJsonFromUrl(Movie.MOVIE_RESULTS, callback).execute(urlTopSearches)
+        RemoteAsyncTask(callback) {
+            getMovie(urlTopSearches)
+        }.execute()
     }
 
     companion object {

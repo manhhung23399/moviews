@@ -7,7 +7,7 @@ import java.lang.Exception
 interface FavoriteContract {
     interface View {
         fun showFavoriteMovies(favoriteMovies: MutableList<Movie>)
-        fun showError(exception: Exception)
+        fun showError(exception: Exception?)
     }
 
     interface Presenter : BasePresenter<View> {

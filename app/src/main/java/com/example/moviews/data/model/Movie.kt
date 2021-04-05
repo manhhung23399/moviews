@@ -9,14 +9,18 @@ data class Movie(
     val title: String,
     val poster: String,
     val backdrop: String,
-    val vote: Double
+    val vote: Double,
+    val date: String,
+    val overview: String
 ) {
     constructor(jsonObject: JSONObject) : this(
         id = jsonObject.getInt(MOVIE_ID),
         title = jsonObject.getString(MOVIE_TITLE),
         poster = jsonObject.getString(MOVIE_POSTER),
         backdrop = jsonObject.getString(MOVIE_BACKDROP),
-        vote = jsonObject.getDouble(MOVIE_VOTE)
+        vote = jsonObject.getDouble(MOVIE_VOTE),
+        date = jsonObject.getString(MOVIE_DATE),
+        overview = jsonObject.getString(MOVIE_OVERVIEW)
     )
 
     constructor(cursor: Cursor) : this(
@@ -24,7 +28,9 @@ data class Movie(
         title = cursor.getString(cursor.getColumnIndex(MOVIE_TITLE)),
         poster = cursor.getString(cursor.getColumnIndex(MOVIE_POSTER)),
         backdrop = cursor.getString(cursor.getColumnIndex(MOVIE_BACKDROP)),
-        vote = cursor.getDouble(cursor.getColumnIndex(MOVIE_VOTE))
+        vote = cursor.getDouble(cursor.getColumnIndex(MOVIE_VOTE)),
+        date = cursor.getString(cursor.getColumnIndex(MOVIE_DATE)),
+        overview = cursor.getString(cursor.getColumnIndex(MOVIE_OVERVIEW))
     )
 
     fun getContentValue() = ContentValues().apply {
@@ -33,6 +39,8 @@ data class Movie(
         put(MOVIE_POSTER, poster)
         put(MOVIE_VOTE, vote)
         put(MOVIE_BACKDROP, backdrop)
+        put(MOVIE_DATE, date)
+        put(MOVIE_OVERVIEW, overview)
     }
 
     companion object {
@@ -43,5 +51,7 @@ data class Movie(
         const val MOVIE_POSTER = "poster_path"
         const val MOVIE_VOTE = "vote_average"
         const val MOVIE_BACKDROP = "backdrop_path"
+        const val MOVIE_DATE = "release_date"
+        const val MOVIE_OVERVIEW = "overview"
     }
 }
