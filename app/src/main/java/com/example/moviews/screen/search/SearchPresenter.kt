@@ -18,7 +18,7 @@ class SearchPresenter(
                 view.showGenres(data)
             }
 
-            override fun onError(e: Exception) {
+            override fun onError(e: Exception?) {
                 view.showError(e)
             }
         })
@@ -30,7 +30,7 @@ class SearchPresenter(
                 view.showTopSearch(data)
             }
 
-            override fun onError(e: Exception) {
+            override fun onError(e: Exception?) {
                 view.showError(e)
             }
         })
@@ -42,7 +42,7 @@ class SearchPresenter(
                 view.showFoundedMovie(data)
             }
 
-            override fun onError(e: Exception) {
+            override fun onError(e: Exception?) {
                 view.showError(e)
             }
         })

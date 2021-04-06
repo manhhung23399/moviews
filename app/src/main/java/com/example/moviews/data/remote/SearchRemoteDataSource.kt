@@ -7,6 +7,8 @@ import com.example.moviews.data.SearchDataSource
 import com.example.moviews.data.model.Genre
 import com.example.moviews.data.model.Movie
 import com.example.moviews.utils.Constant
+import com.example.moviews.utils.parseJsonToObject
+import org.json.JSONObject
 
 class SearchRemoteDataSource : SearchDataSource.Remote {
 
@@ -46,18 +48,25 @@ class SearchRemoteDataSource : SearchDataSource.Remote {
         )
 
     override fun getGenres(callback: OnLoadDataCallback<MutableList<Genre>>) {
-        GetJsonFromUrl(Genre.GENRES, callback).execute(urlGenres)
+        RemoteAsyncTask(callback) {
+            JSONObject(readApi(urlGenres)).getString(Genre.GENRES)
+                .parseJsonToObject()
+        }.execute()
     }
 
     override fun getTopSearches(callback: OnLoadDataCallback<MutableList<Movie>>) {
-        GetJsonFromUrl(Movie.MOVIE_RESULTS, callback).execute(urlTopSearch)
+        RemoteAsyncTask(callback) {
+            JSONObject(readApi(urlTopSearch)).getString(Movie.MOVIE_RESULTS)
+                .parseJsonToObject()
+        }.execute()
     }
 
     override fun searchMovie(name: String, callback: OnLoadDataCallback<MutableList<Movie>>) {
-        GetJsonFromUrl(
-            Movie.MOVIE_RESULTS,
-            callback
-        ).execute(urlSearchMovie + Constant.BASE_QUERY + name)
+        RemoteAsyncTask(callback) {
+            JSONObject(readApi(urlSearchMovie + Constant.BASE_QUERY + name))
+                .getString(Movie.MOVIE_RESULTS)
+                .parseJsonToObject()
+        }.execute()
     }
 
     companion object {
