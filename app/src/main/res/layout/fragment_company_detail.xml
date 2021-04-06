@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <ImageView
+        android:id="@+id/imageLogoCompany"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="5:2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageBackCompanyDetail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dp_10"
+        android:padding="@dimen/dp_16"
+        android:scaleType="center"
+        android:src="@drawable/ic_back"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.1" />
+
+    <View
+        android:id="@+id/viewCompanyDetail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/color_gray"
+        app:layout_constraintDimensionRatio="1:0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageLogoCompany" />
+
+    <TextView
+        android:id="@+id/textNameCompany"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:text="@string/text_name"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintEnd_toEndOf="@id/viewCompanyDetail"
+        app:layout_constraintStart_toStartOf="@id/viewCompanyDetail"
+        app:layout_constraintTop_toTopOf="@id/viewCompanyDetail" />
+
+    <TextView
+        android:id="@+id/textHeadquarters"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:text="@string/text_headquarters"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintEnd_toEndOf="@id/viewCompanyDetail"
+        app:layout_constraintStart_toStartOf="@id/viewCompanyDetail"
+        app:layout_constraintTop_toBottomOf="@id/textNameCompany" />
+
+    <TextView
+        android:id="@+id/textHomePage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:text="@string/text_home_page"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintEnd_toEndOf="@id/viewCompanyDetail"
+        app:layout_constraintStart_toStartOf="@id/viewCompanyDetail"
+        app:layout_constraintTop_toBottomOf="@id/textHeadquarters" />
+
+    <TextView
+        android:id="@+id/textCountry"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:text="@string/text_country"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintEnd_toEndOf="@id/viewCompanyDetail"
+        app:layout_constraintStart_toStartOf="@id/viewCompanyDetail"
+        app:layout_constraintTop_toBottomOf="@id/textHomePage" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

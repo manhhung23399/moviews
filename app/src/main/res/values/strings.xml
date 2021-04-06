@@ -24,4 +24,11 @@
     <string name="text_cast">Cast</string>
     <string name="text_company">Company</string>
     <string name="text_recommendation">More like this</string>
+    <string name="text_name">"Name: "</string>
+    <string name="text_birthday">"Birthday: "</string>
+    <string name="text_place">"Place: "</string>
+    <string name="text_headquarters">"Headquarters: "</string>
+    <string name="text_home_page">"Home page: "</string>
+    <string name="text_country">"Country: "</string>
+    <string name="text_know_for">Know For</string>
 </resources>

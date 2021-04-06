@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <View
+        android:id="@+id/viewCastDetail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/color_gray"
+        app:layout_constraintDimensionRatio="5:4.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageBackCastDetail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dp_10"
+        android:padding="@dimen/dp_16"
+        android:scaleType="center"
+        android:src="@drawable/ic_back"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="@id/viewCastDetail"
+        app:layout_constraintTop_toTopOf="@id/viewCastDetail"
+        app:layout_constraintWidth_percent="0.1" />
+
+    <ImageView
+        android:id="@+id/imageCastDetail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dp_10"
+        android:scaleType="center"
+        app:layout_constraintDimensionRatio="4:5"
+        app:layout_constraintStart_toStartOf="@id/viewCastDetail"
+        app:layout_constraintTop_toTopOf="@id/viewCastDetail"
+        app:layout_constraintWidth_percent="0.4" />
+
+    <TextView
+        android:id="@+id/textNameCastDetail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dp_10"
+        android:text="@string/text_name"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintDimensionRatio="1:0.2"
+        app:layout_constraintEnd_toEndOf="@id/viewCastDetail"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toEndOf="@id/imageCastDetail"
+        app:layout_constraintTop_toTopOf="@id/viewCastDetail" />
+
+    <TextView
+        android:id="@+id/textBirthDay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dp_10"
+        android:text="@string/text_birthday"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintDimensionRatio="1:0.2"
+        app:layout_constraintEnd_toEndOf="@id/viewCastDetail"
+        app:layout_constraintStart_toEndOf="@id/imageCastDetail"
+        app:layout_constraintTop_toBottomOf="@id/textNameCastDetail" />
+
+    <TextView
+        android:id="@+id/textPlace"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dp_10"
+        android:text="@string/text_place"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintDimensionRatio="1:0.2"
+        app:layout_constraintEnd_toEndOf="@id/viewCastDetail"
+        app:layout_constraintStart_toEndOf="@id/imageCastDetail"
+        app:layout_constraintTop_toBottomOf="@id/textBirthDay" />
+
+    <View
+        android:id="@+id/viewLine"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.001"
+        app:layout_constraintStart_toStartOf="@id/viewCastDetail"
+        app:layout_constraintTop_toBottomOf="@id/imageCastDetail" />
+
+    <TextView
+        android:id="@+id/textBiography"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:ellipsize="end"
+        android:maxLines="8"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintDimensionRatio="1:0.34"
+        app:layout_constraintEnd_toEndOf="@id/viewCastDetail"
+        app:layout_constraintStart_toStartOf="@id/viewCastDetail"
+        app:layout_constraintTop_toBottomOf="@id/viewLine"
+        app:layout_constraintWidth_percent="0.95" />
+
+    <View
+        android:id="@+id/viewMovie"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_20"
+        android:background="@color/color_gray"
+        app:layout_constraintDimensionRatio="1:0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewCastDetail" />
+
+    <TextView
+        android:id="@+id/textKnowFor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:text="@string/text_know_for"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintStart_toStartOf="@id/viewMovie"
+        app:layout_constraintTop_toTopOf="@id/viewMovie" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerKnowFor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="@id/viewMovie"
+        app:layout_constraintTop_toBottomOf="@id/textKnowFor" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
