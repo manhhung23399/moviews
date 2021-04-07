@@ -35,7 +35,7 @@ class FavoriteFragment : BaseFragment(), FavoriteContract.View {
         presenter?.onStart()
     }
 
-    override fun initEvent() {
+    override fun initEvents() {
         initActions()
     }
 

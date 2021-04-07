@@ -23,5 +23,4 @@ object Constant {
     const val BASE_CREDIT = "credits"
     const val BASE_RECOMMEND = "recommendations"
     const val BASE_PERSON = "person"
-    const val BASE_MOVIE_CREDITS="movie_credits"
 }

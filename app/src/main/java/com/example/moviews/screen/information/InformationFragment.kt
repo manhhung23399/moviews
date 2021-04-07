@@ -15,7 +15,7 @@ class InformationFragment : BaseFragment() {
     override fun initData() {
     }
 
-    override fun initEvent() {
+    override fun initEvents() {
         switchNotification.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
             } else {
