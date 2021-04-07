@@ -54,7 +54,7 @@ class MovieDetailFragment() : BaseFragment(), MovieDetailContract.View {
 
     override fun initData() {
         context?.let {
-            val movieDetailRepository = RepositoryUtils.getMovieDetailRepository(it)
+            val movieDetailRepository = RepositoryUtils.getDetailRepository(it)
             presenter = MovieDetailPresenter(this, movieDetailRepository)
         }
         arguments?.let { presenter?.getMovieDetail(it.getInt(BUNDLE_MOVIE_ID)) }

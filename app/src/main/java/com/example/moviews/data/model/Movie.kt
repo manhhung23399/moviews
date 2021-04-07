@@ -10,7 +10,7 @@ data class Movie(
     val poster: String,
     val backdrop: String,
     val vote: Double,
-    val date: String,
+    val date: String?,
     val overview: String
 ) {
     constructor(jsonObject: JSONObject) : this(
@@ -19,7 +19,7 @@ data class Movie(
         poster = jsonObject.getString(MOVIE_POSTER),
         backdrop = jsonObject.getString(MOVIE_BACKDROP),
         vote = jsonObject.getDouble(MOVIE_VOTE),
-        date = jsonObject.getString(MOVIE_DATE),
+        date = jsonObject.optString(MOVIE_DATE),
         overview = jsonObject.getString(MOVIE_OVERVIEW)
     )
 

@@ -1,27 +1,14 @@
 package com.example.moviews.data.remote
 
-import android.net.Uri
-import com.example.moviews.BuildConfig
 import com.example.moviews.data.MovieDataSource
 import com.example.moviews.data.OnLoadDataCallback
 import com.example.moviews.data.model.Movie
 import com.example.moviews.utils.Constant
+import com.example.moviews.utils.buildUrl
 import com.example.moviews.utils.parseJsonToObject
 import org.json.JSONObject
 
 class MovieRemoteDataSource : MovieDataSource.Remote {
-
-    private fun buildUrl(paths: List<String>) = Uri.Builder()
-        .scheme(Constant.BASE_HTTPS)
-        .authority(Constant.BASE_AUTHORITY)
-        .appendPath(Constant.BASE_VERSION)
-        .apply {
-            paths.forEach {
-                this.appendPath(it)
-            }
-        }
-        .appendQueryParameter(Constant.BASE_KEY, BuildConfig.API_KEY)
-        .toString()
 
     private var urlTrending = buildUrl(
         listOf(

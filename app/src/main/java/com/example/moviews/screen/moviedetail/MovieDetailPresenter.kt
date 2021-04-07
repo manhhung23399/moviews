@@ -3,11 +3,11 @@ package com.example.moviews.screen.moviedetail
 import com.example.moviews.data.OnLoadDataCallback
 import com.example.moviews.data.model.Movie
 import com.example.moviews.data.model.MovieDetail
-import com.example.moviews.repository.MovieDetailRepository
+import com.example.moviews.repository.DetailRepository
 
 class MovieDetailPresenter(
     private val view: MovieDetailContract.View,
-    private val repository: MovieDetailRepository,
+    private val repository: DetailRepository,
 ) : MovieDetailContract.Presenter {
 
     override fun getMovieDetail(idMovie: Int) {
