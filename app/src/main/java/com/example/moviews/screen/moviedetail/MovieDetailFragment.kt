@@ -8,16 +8,19 @@ import com.example.moviews.data.model.Company
 import com.example.moviews.data.model.Genre
 import com.example.moviews.data.model.Movie
 import com.example.moviews.repository.RepositoryUtils
+import com.example.moviews.screen.castdetail.CastDetailFragment
+import com.example.moviews.screen.companydetail.CompanyDetailFragment
+import com.example.moviews.screen.genres.GenresFragment
 import com.example.moviews.screen.moviedetail.adapter.CastAdapter
 import com.example.moviews.screen.moviedetail.adapter.CompanyAdapter
 import com.example.moviews.screen.moviedetail.adapter.RecommendAdapter
 import com.example.moviews.screen.search.adapter.GenresAdapter
 import com.example.moviews.utils.Constant
+import com.example.moviews.utils.addFragment
 import com.example.moviews.utils.loadImage
 import com.example.moviews.utils.showToast
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 import kotlinx.android.synthetic.main.fragment_movie_detail.imageBack
-import java.lang.Exception
 
 class MovieDetailFragment() : BaseFragment(), MovieDetailContract.View {
 
@@ -91,20 +94,24 @@ class MovieDetailFragment() : BaseFragment(), MovieDetailContract.View {
         recommendAdapter.updateData(recommendations)
     }
 
-    override fun showError(message:String) {
+    override fun showError(message: String) {
         showToast(message)
     }
 
     private fun onClickGenres(genre: Genre) {
+        addFragment(GenresFragment.getInstance(genre.id))
     }
 
     private fun onClickCasts(cast: Cast) {
+        addFragment(CastDetailFragment.getInstance(cast.id))
     }
 
     private fun onClickCompanies(company: Company) {
+        addFragment(CompanyDetailFragment.getInstance(company.id))
     }
 
     private fun onClickRecommend(movie: Movie) {
+        addFragment(getInstance(movie.id))
     }
 
     companion object {

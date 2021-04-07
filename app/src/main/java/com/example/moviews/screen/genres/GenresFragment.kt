@@ -1,9 +1,10 @@
 package com.example.moviews.screen.genres
 
+import androidx.core.os.bundleOf
 import com.example.moviews.R
 import com.example.moviews.base.BaseFragment
 
-class GenresFragment(idGenres: Int) : BaseFragment() {
+class GenresFragment() : BaseFragment() {
 
     override val layoutID: Int
         get() = R.layout.fragment_genres
@@ -18,6 +19,9 @@ class GenresFragment(idGenres: Int) : BaseFragment() {
     }
 
     companion object {
-        fun getInstance(idGenres: Int): GenresFragment = GenresFragment(idGenres)
+        private const val BUNDLE_GENRE_ID = "BUNDLE_GENRE_ID"
+        fun getInstance(idGenres: Int) = GenresFragment().apply {
+            arguments = bundleOf(BUNDLE_GENRE_ID to idGenres)
+        }
     }
 }
