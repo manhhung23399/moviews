@@ -9,11 +9,13 @@ interface MovieDataSource {
         fun deleteMovie(movieId: String, callback: OnLoadDataCallback<Boolean>)
         fun getAllMovies(callback: OnLoadDataCallback<MutableList<Movie>>)
     }
-    interface Remote{
-        fun getTrendingMovie(callback: OnLoadDataCallback<MutableList<Movie>>)
-        fun getUpcomingMovie(callback: OnLoadDataCallback<MutableList<Movie>>)
-        fun getNowPlayingMovie(callback: OnLoadDataCallback<MutableList<Movie>>)
-        fun getPopularMovie(callback: OnLoadDataCallback<MutableList<Movie>>)
-        fun getTopSearchMovie(callback: OnLoadDataCallback<MutableList<Movie>>)
+
+    interface Remote {
+        fun getTrendingMovies(callback: OnLoadDataCallback<MutableList<Movie>>)
+        fun getUpcomingMovies(callback: OnLoadDataCallback<MutableList<Movie>>)
+        fun getNowPlayingMovies(callback: OnLoadDataCallback<MutableList<Movie>>)
+        fun getPopularMovies(callback: OnLoadDataCallback<MutableList<Movie>>)
+        fun getTopSearchMovies(callback: OnLoadDataCallback<MutableList<Movie>>)
+        fun getMovieByGenres(idGenre: Int, callback: OnLoadDataCallback<MutableList<Movie>>)
     }
 }

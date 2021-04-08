@@ -11,20 +11,21 @@ class MovieRepository private constructor(
 ) {
     fun getMovies(type: String, callback: OnLoadDataCallback<MutableList<Movie>>) {
         when (type) {
-            Constant.BASE_POPULAR -> remote.getPopularMovie(callback)
-            Constant.BASE_NOW_PLAYING -> remote.getNowPlayingMovie(callback)
-            Constant.BASE_TRENDING -> remote.getTrendingMovie(callback)
-            Constant.BASE_UPCOMING -> remote.getUpcomingMovie(callback)
+            Constant.BASE_POPULAR -> remote.getPopularMovies(callback)
+            Constant.BASE_NOW_PLAYING -> remote.getNowPlayingMovies(callback)
+            Constant.BASE_TRENDING -> remote.getTrendingMovies(callback)
+            Constant.BASE_UPCOMING -> remote.getUpcomingMovies(callback)
         }
     }
 
-    fun getFavoriteMovies(callback: OnLoadDataCallback<MutableList<Movie>>) {
+    fun getFavoriteMovies(callback: OnLoadDataCallback<MutableList<Movie>>) =
         local.getAllMovies(callback)
-    }
 
-    fun deleteMovies(idMovie: String, callback: OnLoadDataCallback<Boolean>) {
+    fun deleteMovies(idMovie: String, callback: OnLoadDataCallback<Boolean>) =
         local.deleteMovie(idMovie, callback)
-    }
+
+    fun getMovieByGenres(idGenre: Int, callback: OnLoadDataCallback<MutableList<Movie>>) =
+        remote.getMovieByGenres(idGenre, callback)
 
     companion object {
         private var instance: MovieRepository? = null

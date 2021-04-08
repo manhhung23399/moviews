@@ -7,7 +7,7 @@
     android:background="@color/color_dark_gray_light2">
 
     <ImageView
-        android:id="@+id/imageMovieSearch"
+        android:id="@+id/imageMovie"
         android:layout_width="@dimen/dp_180"
         android:layout_height="@dimen/dp_120"
         android:scaleType="fitXY"
@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textTitleMovieSearch"
+        android:id="@+id/textTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_10"
@@ -25,7 +25,7 @@
         android:textSize="@dimen/sp_14"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/imageForward"
-        app:layout_constraintStart_toEndOf="@id/imageMovieSearch"
+        app:layout_constraintStart_toEndOf="@id/imageMovie"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView

@@ -14,7 +14,7 @@ class TopSearchAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopSearchViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_movie_search, parent, false)
+            .inflate(R.layout.item_movie_list, parent, false)
         return TopSearchViewHolder(view, onClickItem)
     }
 

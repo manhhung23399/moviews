@@ -1,4 +1,4 @@
-package com.example.moviews.screen.search.adapter
+package com.example.moviews.screen.genres.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -7,7 +7,7 @@ import com.example.moviews.utils.BaseUrl
 import com.example.moviews.utils.loadImage
 import kotlinx.android.synthetic.main.item_movie_list.view.*
 
-class TopSearchViewHolder(
+class MovieByGenreViewHolder(
     itemView: View,
     private val onClickItem: (movie: Movie) -> Unit
 ) : RecyclerView.ViewHolder(itemView) {

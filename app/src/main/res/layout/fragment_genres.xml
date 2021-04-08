@@ -1,6 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <View
+        android:id="@+id/viewToolBar"
+        android:layout_width="0dp"
+        android:layout_height="?actionBarSize"
+        android:background="@color/color_dark_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageBackGenre"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dp_10"
+        android:padding="@dimen/dp_16"
+        android:scaleType="center"
+        android:src="@drawable/ic_back"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="@id/viewToolBar"
+        app:layout_constraintTop_toTopOf="@id/viewToolBar"
+        app:layout_constraintWidth_percent="0.1" />
+
+    <TextView
+        android:id="@+id/textGenre"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dp_10"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp_24"
+        app:layout_constraintDimensionRatio="1:0.12"
+        app:layout_constraintStart_toEndOf="@id/imageBackGenre"
+        app:layout_constraintTop_toTopOf="@id/viewToolBar"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerMovieByGenre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewToolBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
