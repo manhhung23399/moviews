@@ -49,7 +49,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         presenter?.onStart()
     }
 
-    override fun initEvent() {
+    override fun initEvents() {
     }
 
     override fun showMoviesNowPlaying(movies: MutableList<Movie>) {

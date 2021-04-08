@@ -60,7 +60,7 @@ class MovieDetailFragment() : BaseFragment(), MovieDetailContract.View {
         arguments?.let { presenter?.getMovieDetail(it.getInt(BUNDLE_MOVIE_ID)) }
     }
 
-    override fun initEvent() {
+    override fun initEvents() {
         imageBack.setOnClickListener {
             activity?.onBackPressed()
         }

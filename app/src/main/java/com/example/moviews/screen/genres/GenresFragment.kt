@@ -15,7 +15,7 @@ class GenresFragment() : BaseFragment() {
     override fun initData() {
     }
 
-    override fun initEvent() {
+    override fun initEvents() {
     }
 
     companion object {

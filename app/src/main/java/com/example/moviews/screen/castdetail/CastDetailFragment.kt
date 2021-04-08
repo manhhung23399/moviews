@@ -35,7 +35,7 @@ class CastDetailFragment : BaseFragment(), CastDetailContract.View {
         arguments?.let { presenter?.getCastDetail(it.getInt(BUNDLE_CAST_ID)) }
     }
 
-    override fun initEvent() {
+    override fun initEvents() {
         imageBackCastDetail.setOnClickListener {
             activity?.onBackPressed()
         }

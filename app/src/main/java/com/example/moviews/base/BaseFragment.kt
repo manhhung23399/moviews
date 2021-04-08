@@ -22,12 +22,12 @@ abstract class BaseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initData()
         initViews()
-        initEvent()
+        initEvents()
     }
 
     protected abstract fun initViews()
 
     protected abstract fun initData()
 
-    protected abstract fun initEvent()
+    protected abstract fun initEvents()
 }

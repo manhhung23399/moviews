@@ -42,7 +42,7 @@ class SearchFragment : BaseFragment(), SearchContract.View {
         presenter?.onStart()
     }
 
-    override fun initEvent() {
+    override fun initEvents() {
         initActions()
     }
 
