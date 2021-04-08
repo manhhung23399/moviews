@@ -42,40 +42,58 @@ class MovieRemoteDataSource : MovieDataSource.Remote {
         )
     )
 
-    private fun getMovie(url: String): MutableList<Movie> =
+    private fun getMovies(url: String): MutableList<Movie> =
         JSONObject(readApi(url)).getString(Movie.MOVIE_RESULTS).parseJsonToObject()
 
-    override fun getTrendingMovie(callback: OnLoadDataCallback<MutableList<Movie>>) {
+    override fun getTrendingMovies(callback: OnLoadDataCallback<MutableList<Movie>>) {
         RemoteAsyncTask(callback) {
-            getMovie(urlTrending)
+            getMovies(urlTrending)
         }.execute()
     }
 
-    override fun getUpcomingMovie(callback: OnLoadDataCallback<MutableList<Movie>>) {
+    override fun getUpcomingMovies(callback: OnLoadDataCallback<MutableList<Movie>>) {
         RemoteAsyncTask(callback) {
-            getMovie(urlUpcoming)
+            getMovies(urlUpcoming)
         }.execute()
     }
 
-    override fun getNowPlayingMovie(callback: OnLoadDataCallback<MutableList<Movie>>) {
+    override fun getNowPlayingMovies(callback: OnLoadDataCallback<MutableList<Movie>>) {
         RemoteAsyncTask(callback) {
-            getMovie(urlNowPlaying)
+            getMovies(urlNowPlaying)
         }.execute()
     }
 
-    override fun getPopularMovie(callback: OnLoadDataCallback<MutableList<Movie>>) {
+    override fun getPopularMovies(callback: OnLoadDataCallback<MutableList<Movie>>) {
         RemoteAsyncTask(callback) {
-            getMovie(urlPopular)
+            getMovies(urlPopular)
         }.execute()
     }
 
-    override fun getTopSearchMovie(callback: OnLoadDataCallback<MutableList<Movie>>) {
+    override fun getTopSearchMovies(callback: OnLoadDataCallback<MutableList<Movie>>) {
         RemoteAsyncTask(callback) {
-            getMovie(urlTopSearches)
+            getMovies(urlTopSearches)
+        }.execute()
+    }
+
+    override fun getMovieByGenres(idGenre: Int, callback: OnLoadDataCallback<MutableList<Movie>>) {
+        val paths = listOf(
+            BASE_DISCOVER,
+            Constant.BASE_MOVIE
+        )
+        val queries = mapOf(
+            BASE_WITH_GENRES to idGenre.toString()
+        )
+        RemoteAsyncTask(callback) {
+            val json = readApi(buildUrl(paths, queries))
+            JSONObject(json)
+                .getString(Movie.MOVIE_RESULTS)
+                .parseJsonToObject()
         }.execute()
     }
 
     companion object {
+        const val BASE_DISCOVER = "discover"
+        const val BASE_WITH_GENRES = "with_genres"
         private var instance: MovieRemoteDataSource? = null
         fun getInstance(): MovieRemoteDataSource = instance ?: MovieRemoteDataSource()
             .also { instance = it }

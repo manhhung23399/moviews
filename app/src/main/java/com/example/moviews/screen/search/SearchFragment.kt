@@ -67,7 +67,7 @@ class SearchFragment : BaseFragment(), SearchContract.View {
     }
 
     private fun onClickGenres(genre: Genre) {
-        addFragment(GenresFragment.getInstance(genre.id))
+        addFragment(GenresFragment.getInstance(genre.id, genre.name))
     }
 
     private fun initActions() {
