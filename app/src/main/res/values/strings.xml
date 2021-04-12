@@ -5,6 +5,7 @@
     <string name="title_search">Search</string>
     <string name="title_favorites">Favorites</string>
     <string name="title_information">Information</string>
+    <string name="title_collapsed">MoViews Message!</string>
 
     <string name="text_trending_now">Trending Now</string>
     <string name="text_upcoming">Upcoming</string>
@@ -31,4 +32,7 @@
     <string name="text_home_page">"Home page: "</string>
     <string name="text_country">"Country: "</string>
     <string name="text_know_for">Know For</string>
+    <string name="text_content"><u>Come and see!</u></string>
+    <string name="text_collapsed">Expand to show!</string>
+    <string name="text_expanded">MoViews bring to you:</string>
 </resources>

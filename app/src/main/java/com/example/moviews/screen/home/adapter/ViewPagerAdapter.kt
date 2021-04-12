@@ -10,14 +10,14 @@ import com.example.moviews.utils.Constant
 import com.example.moviews.utils.loadImage
 
 import kotlinx.android.synthetic.main.item_slide.view.*
+import java.lang.Math.min
 
 class ViewPagerAdapter(
     private val onClickItem: (Movie) -> Unit
 ) : PagerAdapter() {
-
     private val movies = mutableListOf<Movie>()
 
-    override fun getCount(): Int = movies.size
+    override fun getCount() = min(movies.size, 5)
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val view =
