@@ -35,4 +35,6 @@
     <string name="text_content"><u>Come and see!</u></string>
     <string name="text_collapsed">Expand to show!</string>
     <string name="text_expanded">MoViews bring to you:</string>
+    <string name="text_retry">Retry</string>
+    <string name="text_no_internet">Network not available</string>
 </resources>
