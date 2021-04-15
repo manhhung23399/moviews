@@ -10,16 +10,21 @@ class CastDetailPresenter(
 ) : CastDetailContract.Presenter {
 
     override fun getCastDetail(idCast: Int) {
+        view.showLoading()
         repository.getCastDetail(idCast, object : OnLoadDataCallback<CastDetail> {
             override fun onSuccess(data: CastDetail) {
                 view.run {
                     showCastDetail(data)
                     showMovies(data.movies)
+                    hideLoading()
                 }
             }
 
             override fun onError(e: Exception?) {
-                view.showError(e?.message.toString())
+                view.apply {
+                    showError(e?.message.toString())
+                    hideLoading()
+                }
             }
         })
     }

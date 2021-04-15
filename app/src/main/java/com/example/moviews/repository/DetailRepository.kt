@@ -24,6 +24,12 @@ class DetailRepository private constructor(
     fun getCompanyDetail(idCompany: Int, callback: OnLoadDataCallback<CompanyDetail>) =
         remote.getCompanyDetail(idCompany, callback)
 
+    fun getFavoriteMovie(callback: OnLoadDataCallback<MutableList<Movie>>) =
+        local.getAllMovies(callback)
+
+    fun deleteFavoriteMovie(idMovie:Int,callback: OnLoadDataCallback<Boolean>)=
+        local.deleteMovie(idMovie.toString(),callback)
+
     companion object {
         private var instance: DetailRepository? = null
         fun getInstance(

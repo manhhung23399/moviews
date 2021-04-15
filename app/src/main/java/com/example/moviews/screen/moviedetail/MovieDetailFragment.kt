@@ -15,15 +15,13 @@ import com.example.moviews.screen.moviedetail.adapter.CastAdapter
 import com.example.moviews.screen.moviedetail.adapter.CompanyAdapter
 import com.example.moviews.screen.moviedetail.adapter.RecommendAdapter
 import com.example.moviews.screen.search.adapter.GenresAdapter
-import com.example.moviews.utils.Constant
-import com.example.moviews.utils.addFragment
-import com.example.moviews.utils.loadImage
-import com.example.moviews.utils.showToast
+import com.example.moviews.utils.*
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 import kotlinx.android.synthetic.main.fragment_movie_detail.imageBack
 
-class MovieDetailFragment() : BaseFragment(), MovieDetailContract.View {
-
+class MovieDetailFragment : BaseFragment(), MovieDetailContract.View {
+    private var checkFavorite:Boolean? = null
+    private var loadingDialog: LoadingDialog? = null
     private var movie: Movie? = null
     private val recommendAdapter = RecommendAdapter(this::onClickRecommend)
     private val companyAdapter = CompanyAdapter(this::onClickCompanies)
@@ -50,6 +48,7 @@ class MovieDetailFragment() : BaseFragment(), MovieDetailContract.View {
             setHasFixedSize(true)
             adapter = recommendAdapter
         }
+        initDialog()
     }
 
     override fun initData() {
@@ -58,6 +57,7 @@ class MovieDetailFragment() : BaseFragment(), MovieDetailContract.View {
             presenter = MovieDetailPresenter(this, movieDetailRepository)
         }
         arguments?.let { presenter?.getMovieDetail(it.getInt(BUNDLE_MOVIE_ID)) }
+        presenter?.getFavoriteMovie()
     }
 
     override fun initEvents() {
@@ -65,13 +65,25 @@ class MovieDetailFragment() : BaseFragment(), MovieDetailContract.View {
             activity?.onBackPressed()
         }
         imageFavoriteDetail.setOnClickListener {
-            movie?.let { presenter?.insertMovie(it) }
+            checkFavorite = if (checkFavorite == true){
+                arguments?.getInt(BUNDLE_MOVIE_ID)?.let { presenter?.deleteFavoriteMovie(it) }
+                imageFavoriteDetail.setImageResource(R.drawable.ic_favorite)
+                false
+            }else{
+                movie?.let { presenter?.insertMovie(it) }
+                imageFavoriteDetail.setImageResource(R.drawable.ic_favorite_red)
+                true
+            }
         }
     }
 
     override fun showMovie(movie: Movie) {
-        imageBackdrop.loadImage(Constant.BASE_URL_IMAGE + movie.backdrop)
-        imagePosterDetail.loadImage(Constant.BASE_URL_IMAGE + movie.poster)
+        if (imageBackdrop != null) {
+            imageBackdrop.loadImage(Constant.BASE_URL_IMAGE + movie.backdrop)
+        }
+        if (imagePosterDetail != null) {
+            imagePosterDetail.loadImage(Constant.BASE_URL_IMAGE + movie.poster)
+        }
         textVoteDetail.text = movie.vote.toString()
         textOverview.text = movie.overview
         textDate.text = movie.date
@@ -98,6 +110,23 @@ class MovieDetailFragment() : BaseFragment(), MovieDetailContract.View {
         showToast(message)
     }
 
+    override fun showFavoriteMovie(movies: MutableList<Movie>) {
+        movies.forEach {
+            if (arguments?.getInt(BUNDLE_MOVIE_ID) == it.id) {
+                imageFavoriteDetail.setImageResource(R.drawable.ic_favorite_red)
+                checkFavorite = true
+            }
+        }
+    }
+
+    override fun showLoading() {
+        loadingDialog?.show()
+    }
+
+    override fun hideLoading() {
+        loadingDialog?.dismiss()
+    }
+
     private fun onClickGenres(genre: Genre) {
         addFragment(GenresFragment.getInstance(genre.id, genre.name))
     }
@@ -112,6 +141,10 @@ class MovieDetailFragment() : BaseFragment(), MovieDetailContract.View {
 
     private fun onClickRecommend(movie: Movie) {
         addFragment(getInstance(movie.id))
+    }
+
+    private fun initDialog() {
+        context?.let { loadingDialog = LoadingDialog(it) }
     }
 
     companion object {

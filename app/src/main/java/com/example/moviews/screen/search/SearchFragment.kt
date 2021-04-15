@@ -2,6 +2,7 @@ package com.example.moviews.screen.search
 
 import android.app.Activity
 import android.content.Context
+import android.view.KeyEvent
 import android.view.inputmethod.InputMethodManager
 import com.example.moviews.R
 import com.example.moviews.base.BaseFragment
@@ -12,11 +13,13 @@ import com.example.moviews.screen.genres.GenresFragment
 import com.example.moviews.screen.moviedetail.MovieDetailFragment
 import com.example.moviews.screen.search.adapter.GenresAdapter
 import com.example.moviews.screen.search.adapter.TopSearchAdapter
+import com.example.moviews.utils.LoadingDialog
 import com.example.moviews.utils.addFragment
 import com.example.moviews.utils.showToast
 import kotlinx.android.synthetic.main.fragment_search.*
 
 class SearchFragment : BaseFragment(), SearchContract.View {
+    private var loadingDialog: LoadingDialog? = null
     private var presenter: SearchPresenter? = null
     private val topSearchAdapter = TopSearchAdapter(this::onClickItemRecycler)
     private val genresAdapter = GenresAdapter(this::onClickGenres)
@@ -32,6 +35,7 @@ class SearchFragment : BaseFragment(), SearchContract.View {
             setHasFixedSize(true)
             adapter = genresAdapter
         }
+        initDialog()
     }
 
     override fun initData() {
@@ -44,6 +48,7 @@ class SearchFragment : BaseFragment(), SearchContract.View {
 
     override fun initEvents() {
         initActions()
+
     }
 
     override fun showGenres(genres: MutableList<Genre>) {
@@ -62,6 +67,18 @@ class SearchFragment : BaseFragment(), SearchContract.View {
         showToast(exception?.message.toString())
     }
 
+    override fun showLoading() {
+        loadingDialog?.show()
+    }
+
+    override fun hideLoading() {
+        loadingDialog?.dismiss()
+    }
+
+    private fun initDialog() {
+        context?.let { loadingDialog = LoadingDialog(it) }
+    }
+
     private fun onClickItemRecycler(movie: Movie) {
         addFragment(MovieDetailFragment.getInstance(movie.id))
     }
@@ -71,20 +88,16 @@ class SearchFragment : BaseFragment(), SearchContract.View {
     }
 
     private fun initActions() {
-        imageSearch.setOnClickListener {
-            val name = editSearch.text.toString()
-            presenter?.searchMovie(name)
-            activity?.let { hideSoftKeyboard(it) }
+        editSearch.setOnKeyListener { _, keyCode, _ ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                val name = editSearch.text.toString()
+                presenter?.searchMovie(name)
+                val inputMethodManager =
+                    activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(activity?.currentFocus?.windowToken, 0)
+            }
+            return@setOnKeyListener true
         }
-    }
-
-    private fun hideSoftKeyboard(activity: Activity) {
-        if (activity.currentFocus == null) {
-            return
-        }
-        val inputMethodManager =
-            activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(activity.currentFocus?.windowToken, 0)
     }
 
     companion object {

@@ -5,6 +5,7 @@ import android.net.ConnectivityManager
 import android.net.Network
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.FragmentManager
 import com.example.moviews.screen.error.ErrorFragment
 import com.example.moviews.screen.favorite.FavoriteFragment
 import com.example.moviews.screen.home.HomeFragment
@@ -33,15 +34,19 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigationHome -> {
+                    supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                     switchFragment(homeFragment)
                 }
                 R.id.navigationSearch -> {
+                    supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                     switchFragment(searchFragment)
                 }
                 R.id.navigationFavorites -> {
+                    supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                     switchFragment(favoriteFragment)
                 }
                 R.id.navigationInfomation -> {
+                    supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                     switchFragment(informationFragment)
                 }
             }

@@ -9,6 +9,8 @@ interface CastDetailContract {
         fun showCastDetail(castDetail: CastDetail)
         fun showMovies(movies: MutableList<Movie>)
         fun showError(message: String)
+        fun showLoading()
+        fun hideLoading()
     }
 
     interface Presenter : BasePresenter<View> {

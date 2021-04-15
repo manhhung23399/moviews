@@ -7,6 +7,8 @@ interface CompanyDetailContract {
     interface View {
         fun showCompanyDetail(companyDetail: CompanyDetail)
         fun showError(message: String)
+        fun showLoading()
+        fun hideLoading()
     }
 
     interface Presenter : BasePresenter<View> {

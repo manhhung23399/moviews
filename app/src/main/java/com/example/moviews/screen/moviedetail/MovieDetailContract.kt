@@ -14,10 +14,15 @@ interface MovieDetailContract {
         fun showCompanies(companies: MutableList<Company>)
         fun showRecommendations(recommendations: MutableList<Movie>)
         fun showError(message:String)
+        fun showFavoriteMovie(movies: MutableList<Movie>)
+        fun showLoading()
+        fun hideLoading()
     }
 
     interface Presenter : BasePresenter<View> {
         fun getMovieDetail(idMovie: Int)
         fun insertMovie(movie: Movie)
+        fun getFavoriteMovie()
+        fun deleteFavoriteMovie(idMovie: Int)
     }
 }

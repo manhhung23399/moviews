@@ -8,13 +8,11 @@ import com.example.moviews.data.model.Movie
 import com.example.moviews.repository.RepositoryUtils
 import com.example.moviews.screen.home.adapter.MovieAdapter
 import com.example.moviews.screen.moviedetail.MovieDetailFragment
-import com.example.moviews.utils.Constant
-import com.example.moviews.utils.addFragment
-import com.example.moviews.utils.loadImage
-import com.example.moviews.utils.showToast
+import com.example.moviews.utils.*
 import kotlinx.android.synthetic.main.fragment_cast_detail.*
 
 class CastDetailFragment : BaseFragment(), CastDetailContract.View {
+    private var loadingDialog: LoadingDialog? = null
     private val movieAdapter = MovieAdapter(this::onClickMovies)
     private var presenter: CastDetailPresenter? = null
     override val layoutID: Int
@@ -25,6 +23,7 @@ class CastDetailFragment : BaseFragment(), CastDetailContract.View {
             setHasFixedSize(true)
             adapter = movieAdapter
         }
+        initDialog()
     }
 
     override fun initData() {
@@ -55,6 +54,18 @@ class CastDetailFragment : BaseFragment(), CastDetailContract.View {
 
     override fun showError(message: String) {
         showToast(message)
+    }
+
+    override fun showLoading() {
+        loadingDialog?.show()
+    }
+
+    override fun hideLoading() {
+        loadingDialog?.dismiss()
+    }
+
+    private fun initDialog() {
+        context?.let { loadingDialog = LoadingDialog(it) }
     }
 
     private fun onClickMovies(movie: Movie) {

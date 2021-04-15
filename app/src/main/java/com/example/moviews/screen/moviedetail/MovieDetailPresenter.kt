@@ -11,6 +11,7 @@ class MovieDetailPresenter(
 ) : MovieDetailContract.Presenter {
 
     override fun getMovieDetail(idMovie: Int) {
+        view.showLoading()
         repository.getMovieDetail(idMovie, object : OnLoadDataCallback<MovieDetail> {
             override fun onSuccess(data: MovieDetail) {
                 view.run {
@@ -19,11 +20,13 @@ class MovieDetailPresenter(
                     showCasts(data.casts)
                     showCompanies(data.companies)
                     showRecommendations(data.recommendations)
+                    hideLoading()
                 }
             }
 
             override fun onError(e: Exception?) {
                 view.showError(e?.message.toString())
+                view.hideLoading()
             }
         })
     }
@@ -35,6 +38,30 @@ class MovieDetailPresenter(
 
             override fun onError(e: Exception?) {
             }
+        })
+    }
+
+    override fun getFavoriteMovie() {
+        repository.getFavoriteMovie(object :OnLoadDataCallback<MutableList<Movie>>{
+            override fun onSuccess(data: MutableList<Movie>) {
+                view.showFavoriteMovie(data)
+            }
+
+            override fun onError(e: Exception?) {
+                view.showError(e?.message.toString())
+            }
+        })
+    }
+
+    override fun deleteFavoriteMovie(idMovie: Int) {
+        repository.deleteFavoriteMovie(idMovie,object :OnLoadDataCallback<Boolean>{
+            override fun onSuccess(data: Boolean) {
+            }
+
+            override fun onError(e: Exception?) {
+                view.showError(e?.message.toString())
+            }
+
         })
     }
 

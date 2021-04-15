@@ -19,7 +19,7 @@
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/color_dark_gray"
+        android:background="@color/color_dark_gray_light2"
         app:itemIconTint="@xml/selector_navigation"
         app:itemTextColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"

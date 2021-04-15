@@ -13,8 +13,8 @@ object Notification {
         val pendingIntent = PendingIntent.getBroadcast(context, 0, getIntent(context), 0)
         val currentCal: Calendar = Calendar.getInstance()
         val firingCal: Calendar = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, 14)
-            set(Calendar.MINUTE, 5)
+            set(Calendar.HOUR_OF_DAY, 13)
+            set(Calendar.MINUTE, 18)
             set(Calendar.SECOND, 0)
         }
         var intendedTime = firingCal.timeInMillis

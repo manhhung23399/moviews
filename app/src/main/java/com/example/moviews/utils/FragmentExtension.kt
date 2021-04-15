@@ -8,11 +8,13 @@ import com.example.moviews.screen.moviedetail.MovieDetailFragment
 
 fun Fragment.addFragment(fragment: Fragment) {
     activity?.run {
-        supportFragmentManager.beginTransaction()
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .replace(R.id.frameContainer, fragment)
-            .addToBackStack(null)
-            .commit()
+        supportFragmentManager.apply {
+            beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .replace(R.id.frameContainer, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
     }
 }
 

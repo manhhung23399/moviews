@@ -1,5 +1,6 @@
 package com.example.moviews.screen.home
 
+import androidx.activity.OnBackPressedCallback
 import com.example.moviews.R
 import com.example.moviews.base.BaseFragment
 import com.example.moviews.data.model.Movie
@@ -7,12 +8,14 @@ import com.example.moviews.screen.home.adapter.MovieAdapter
 import com.example.moviews.screen.home.adapter.ViewPagerAdapter
 import com.example.moviews.repository.RepositoryUtils
 import com.example.moviews.screen.moviedetail.MovieDetailFragment
+import com.example.moviews.utils.LoadingDialog
 import com.example.moviews.utils.addFragment
 import com.example.moviews.utils.showToast
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.viewPagerBanner
 
 class HomeFragment : BaseFragment(), HomeContract.View {
+    private var loadingDialog: LoadingDialog? = null
     private var presenter: HomePresenter? = null
     private val trendingAdapter = MovieAdapter(this::onClickItemRecycler)
     private val upcomingAdapter = MovieAdapter(this::onClickItemRecycler)
@@ -22,6 +25,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         get() = R.layout.fragment_home
 
     override fun initViews() {
+        initDialog()
         recyclerTrendingNow.apply {
             setHasFixedSize(true)
             adapter = trendingAdapter
@@ -39,6 +43,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
             viewPagerBanner,
             true
         )
+
     }
 
     override fun initData() {
@@ -72,12 +77,23 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         showToast(exception?.message.toString())
     }
 
+    override fun showLoading() {
+        loadingDialog?.show()
+    }
+
+    override fun hideLoading() {
+        loadingDialog?.dismiss()
+    }
+
     private fun onClickItemRecycler(movie: Movie) {
         addFragment(MovieDetailFragment.getInstance(movie.id))
     }
 
     private fun onClickItemViewPager(movie: Movie) {
         addFragment(MovieDetailFragment.getInstance(movie.id))
+    }
+    private fun initDialog(){
+        context?.let { loadingDialog = LoadingDialog(it) }
     }
 
     companion object {

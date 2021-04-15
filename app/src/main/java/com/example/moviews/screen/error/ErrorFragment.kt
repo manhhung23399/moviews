@@ -2,6 +2,7 @@ package com.example.moviews.screen.error
 
 import android.content.Context
 import android.net.ConnectivityManager
+import androidx.fragment.app.FragmentTransaction
 import com.example.moviews.R
 import com.example.moviews.base.BaseFragment
 import com.example.moviews.screen.home.HomeFragment
@@ -21,7 +22,12 @@ class ErrorFragment : BaseFragment() {
     override fun initEvents() {
         chipRetry.setOnClickListener {
             if (checkInternet()) {
-                addFragment(HomeFragment.newInstance())
+                activity?.run {
+                    supportFragmentManager.beginTransaction()
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .replace(R.id.frameContainer, HomeFragment.newInstance())
+                        .commit()
+                }
             }
         }
     }

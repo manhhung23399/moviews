@@ -10,6 +10,8 @@ interface HomeContract {
         fun showMoviesTrending(movies: MutableList<Movie>)
         fun showMoviesPopular(movies: MutableList<Movie>)
         fun showError(exception: Exception?)
+        fun showLoading()
+        fun hideLoading()
     }
 
     interface Presenter : BasePresenter<View> {

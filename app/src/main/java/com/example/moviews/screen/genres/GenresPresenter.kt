@@ -9,13 +9,16 @@ class GenresPresenter(
     private val repository: MovieRepository
 ) : GenresContract.Presenter {
     override fun getMovies(idGenre: Int) {
+        view.showLoading()
         repository.getMovieByGenres(idGenre, object : OnLoadDataCallback<MutableList<Movie>> {
             override fun onSuccess(data: MutableList<Movie>) {
                 view.showMovies(data)
+                view.hideLoading()
             }
 
             override fun onError(e: Exception?) {
                 view.showError(e?.message.toString())
+                view.hideLoading()
             }
         })
     }

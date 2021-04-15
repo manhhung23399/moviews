@@ -7,6 +7,8 @@ interface GenresContract {
     interface View {
         fun showMovies(movies: MutableList<Movie>)
         fun showError(message: String)
+        fun showLoading()
+        fun hideLoading()
     }
 
     interface Presenter : BasePresenter<View> {

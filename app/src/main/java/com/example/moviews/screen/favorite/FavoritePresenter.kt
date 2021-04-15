@@ -10,13 +10,16 @@ class FavoritePresenter(
 ) : FavoriteContract.Presenter {
 
     override fun getFavoriteMovies() {
+        view.showLoading()
         repository.getFavoriteMovies(object : OnLoadDataCallback<MutableList<Movie>> {
             override fun onSuccess(data: MutableList<Movie>) {
                 view.showFavoriteMovies(data)
+                view.hideLoading()
             }
 
             override fun onError(e: Exception?) {
                 view.showError(e)
+                view.hideLoading()
             }
         })
     }

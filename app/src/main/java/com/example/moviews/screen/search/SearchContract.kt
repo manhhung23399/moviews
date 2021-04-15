@@ -10,6 +10,8 @@ interface SearchContract {
         fun showTopSearch(movies:MutableList<Movie>)
         fun showFoundedMovie(movies: MutableList<Movie>)
         fun showError(exception: Exception?)
+        fun showLoading()
+        fun hideLoading()
     }
     interface Presenter:BasePresenter<View>{
         fun getGenres()

@@ -8,6 +8,8 @@ interface FavoriteContract {
     interface View {
         fun showFavoriteMovies(favoriteMovies: MutableList<Movie>)
         fun showError(exception: Exception?)
+        fun showLoading()
+        fun hideLoading()
     }
 
     interface Presenter : BasePresenter<View> {

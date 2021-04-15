@@ -7,12 +7,13 @@ import com.example.moviews.data.model.Movie
 import com.example.moviews.repository.RepositoryUtils
 import com.example.moviews.screen.genres.adapter.MovieByGenreAdapter
 import com.example.moviews.screen.moviedetail.MovieDetailFragment
+import com.example.moviews.utils.LoadingDialog
 import com.example.moviews.utils.addFragment
 import com.example.moviews.utils.showToast
 import kotlinx.android.synthetic.main.fragment_genres.*
 
 class GenresFragment() : BaseFragment(), GenresContract.View {
-
+    private var loadingDialog: LoadingDialog? = null
     private val movieByGenreAdapter = MovieByGenreAdapter(this::onClickMovie)
     private var presenter: GenresPresenter? = null
     override val layoutID: Int
@@ -23,6 +24,7 @@ class GenresFragment() : BaseFragment(), GenresContract.View {
             setHasFixedSize(true)
             adapter = movieByGenreAdapter
         }
+        initDialog()
     }
 
     override fun initData() {
@@ -46,6 +48,18 @@ class GenresFragment() : BaseFragment(), GenresContract.View {
 
     override fun showError(message: String) {
         showToast(message)
+    }
+
+    override fun showLoading() {
+        loadingDialog?.show()
+    }
+
+    override fun hideLoading() {
+        loadingDialog?.dismiss()
+    }
+
+    private fun initDialog() {
+        context?.let { loadingDialog = LoadingDialog(it) }
     }
 
     private fun onClickMovie(movie: Movie) {

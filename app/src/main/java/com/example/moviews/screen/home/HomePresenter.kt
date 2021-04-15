@@ -11,6 +11,7 @@ class HomePresenter(
 ) : HomeContract.Presenter {
 
     override fun getMovies(type: String) {
+        view.showLoading()
         repository.getMovies(type, object : OnLoadDataCallback<MutableList<Movie>> {
             override fun onSuccess(data: MutableList<Movie>) {
                 when (type) {
@@ -19,15 +20,17 @@ class HomePresenter(
                     Constant.BASE_NOW_PLAYING -> view.showMoviesNowPlaying(data)
                     Constant.BASE_TRENDING -> view.showMoviesTrending(data)
                 }
+                view.hideLoading()
             }
 
             override fun onError(e: Exception?) {
                 view.showError(e)
+                view.hideLoading()
             }
         })
     }
 
-    override fun onStart() {
+    override fun  onStart() {
         getMovies(Constant.BASE_TRENDING)
         getMovies(Constant.BASE_UPCOMING)
         getMovies(Constant.BASE_NOW_PLAYING)

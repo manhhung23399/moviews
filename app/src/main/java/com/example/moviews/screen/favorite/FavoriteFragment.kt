@@ -7,13 +7,14 @@ import com.example.moviews.data.model.Movie
 import com.example.moviews.repository.RepositoryUtils
 import com.example.moviews.screen.favorite.adapter.FavoriteAdapter
 import com.example.moviews.screen.moviedetail.MovieDetailFragment
+import com.example.moviews.utils.LoadingDialog
 import com.example.moviews.utils.addFragment
 import com.example.moviews.utils.showToast
 import kotlinx.android.synthetic.main.fragment_favorite.*
 import java.lang.Exception
 
 class FavoriteFragment : BaseFragment(), FavoriteContract.View {
-
+    private var loadingDialog: LoadingDialog? = null
     private var presenter: FavoritePresenter? = null
     private val favoriteAdapter = FavoriteAdapter(this::onClickItem, this::onClickDelete)
 
@@ -25,6 +26,7 @@ class FavoriteFragment : BaseFragment(), FavoriteContract.View {
             setHasFixedSize(true)
             adapter = favoriteAdapter
         }
+        initDialog()
     }
 
     override fun initData() {
@@ -46,6 +48,18 @@ class FavoriteFragment : BaseFragment(), FavoriteContract.View {
     override fun showError(exception: Exception?) {
         showToast(exception.toString())
     }
+
+    override fun showLoading() {
+        loadingDialog?.show()
+    }
+
+    override fun hideLoading() {
+        loadingDialog?.dismiss()
+    }
+    private fun initDialog() {
+        context?.let { loadingDialog = LoadingDialog(it) }
+    }
+
 
     fun onClickItem(movie: Movie) {
         addFragment(MovieDetailFragment.getInstance(movie.id))

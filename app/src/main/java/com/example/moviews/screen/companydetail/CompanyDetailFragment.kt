@@ -6,15 +6,18 @@ import com.example.moviews.base.BaseFragment
 import com.example.moviews.data.model.CompanyDetail
 import com.example.moviews.repository.RepositoryUtils
 import com.example.moviews.utils.BaseUrl.baseUrlImage
+import com.example.moviews.utils.LoadingDialog
 import com.example.moviews.utils.loadImage
 import kotlinx.android.synthetic.main.fragment_company_detail.*
 
 class CompanyDetailFragment : BaseFragment(), CompanyDetailContract.View {
+    private var loadingDialog: LoadingDialog? = null
     private var presenter: CompanyDetailPresenter? = null
     override val layoutID: Int
         get() = R.layout.fragment_company_detail
 
     override fun initViews() {
+        initDialog()
     }
 
     override fun initData() {
@@ -41,6 +44,17 @@ class CompanyDetailFragment : BaseFragment(), CompanyDetailContract.View {
 
     override fun showError(message: String) {
         showError(message)
+    }
+
+    override fun showLoading() {
+        loadingDialog?.show()
+    }
+
+    override fun hideLoading() {
+        loadingDialog?.dismiss()
+    }
+    private fun initDialog() {
+        context?.let { loadingDialog = LoadingDialog(it) }
     }
 
     companion object {
