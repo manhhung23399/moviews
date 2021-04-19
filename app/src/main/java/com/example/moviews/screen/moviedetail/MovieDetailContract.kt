@@ -1,10 +1,7 @@
 package com.example.moviews.screen.moviedetail
 
 import com.example.moviews.base.BasePresenter
-import com.example.moviews.data.model.Cast
-import com.example.moviews.data.model.Company
-import com.example.moviews.data.model.Genre
-import com.example.moviews.data.model.Movie
+import com.example.moviews.data.model.*
 
 interface MovieDetailContract {
     interface View {
@@ -15,6 +12,7 @@ interface MovieDetailContract {
         fun showRecommendations(recommendations: MutableList<Movie>)
         fun showError(message:String)
         fun showFavoriteMovie(movies: MutableList<Movie>)
+        fun showVideos(videos:MutableList<Video>)
         fun showLoading()
         fun hideLoading()
     }

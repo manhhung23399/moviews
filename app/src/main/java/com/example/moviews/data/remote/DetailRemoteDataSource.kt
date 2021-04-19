@@ -14,7 +14,7 @@ class DetailRemoteDataSource : DetailDataSource.Remote {
     override fun getMovieDetail(idMovie: Int, callback: OnLoadDataCallback<MovieDetail>) {
         val paths = listOf(Constant.BASE_MOVIE, idMovie.toString())
         val queries = mapOf(
-            Constant.BASE_APPEND to "${Constant.BASE_CREDIT},${Constant.BASE_RECOMMEND}"
+            Constant.BASE_APPEND to "${Constant.BASE_CREDIT},${Constant.BASE_RECOMMEND},${Constant.BASE_VIDEO}"
         )
         RemoteAsyncTask(callback) {
             val json = readApi(buildUrl(paths, queries))

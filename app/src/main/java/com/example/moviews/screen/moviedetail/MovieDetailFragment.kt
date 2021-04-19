@@ -1,12 +1,11 @@
 package com.example.moviews.screen.moviedetail
 
+import android.content.Intent
+import android.util.Log
 import androidx.core.os.bundleOf
 import com.example.moviews.R
 import com.example.moviews.base.BaseFragment
-import com.example.moviews.data.model.Cast
-import com.example.moviews.data.model.Company
-import com.example.moviews.data.model.Genre
-import com.example.moviews.data.model.Movie
+import com.example.moviews.data.model.*
 import com.example.moviews.repository.RepositoryUtils
 import com.example.moviews.screen.castdetail.CastDetailFragment
 import com.example.moviews.screen.companydetail.CompanyDetailFragment
@@ -20,7 +19,8 @@ import kotlinx.android.synthetic.main.fragment_movie_detail.*
 import kotlinx.android.synthetic.main.fragment_movie_detail.imageBack
 
 class MovieDetailFragment : BaseFragment(), MovieDetailContract.View {
-    private var checkFavorite:Boolean? = null
+    private var videos = mutableListOf<Video>()
+    private var checkFavorite: Boolean? = null
     private var loadingDialog: LoadingDialog? = null
     private var movie: Movie? = null
     private val recommendAdapter = RecommendAdapter(this::onClickRecommend)
@@ -65,15 +65,18 @@ class MovieDetailFragment : BaseFragment(), MovieDetailContract.View {
             activity?.onBackPressed()
         }
         imageFavoriteDetail.setOnClickListener {
-            checkFavorite = if (checkFavorite == true){
+            checkFavorite = if (checkFavorite == true) {
                 arguments?.getInt(BUNDLE_MOVIE_ID)?.let { presenter?.deleteFavoriteMovie(it) }
                 imageFavoriteDetail.setImageResource(R.drawable.ic_favorite)
                 false
-            }else{
+            } else {
                 movie?.let { presenter?.insertMovie(it) }
                 imageFavoriteDetail.setImageResource(R.drawable.ic_favorite_red)
                 true
             }
+        }
+        imageYoutube.setOnClickListener {
+            context?.let { it1 -> startActivity(TrailerActivity.getIntent(it1).putExtra("KEY",videos[0].key)) }
         }
     }
 
@@ -117,6 +120,10 @@ class MovieDetailFragment : BaseFragment(), MovieDetailContract.View {
                 checkFavorite = true
             }
         }
+    }
+
+    override fun showVideos(videos: MutableList<Video>) {
+        this.videos = videos
     }
 
     override fun showLoading() {

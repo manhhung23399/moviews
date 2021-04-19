@@ -11,6 +11,7 @@ inline fun <reified T> String.parseJsonToObject() = JSONArray(this).run {
             Cast::class -> Cast(getJSONObject(index)) as T
             Company::class -> Company(getJSONObject(index)) as T
             Genre::class -> Genre(getJSONObject(index)) as T
+            Video::class -> Video(getJSONObject(index)) as T
             else -> throw JSONException("Error")
         }
     }

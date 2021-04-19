@@ -31,6 +31,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.1" />
+        <ImageView
+            android:id="@+id/imageYoutube"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@id/imageBackdrop"
+            app:layout_constraintStart_toStartOf="@id/imageBackdrop"
+            app:layout_constraintEnd_toEndOf="@id/imageBackdrop"
+            app:layout_constraintBottom_toBottomOf="@id/imageBackdrop"
+            app:layout_constraintWidth_percent="0.1"
+            app:layout_constraintDimensionRatio="1:0.8"
+            android:src="@drawable/ic_youtube"
+            android:scaleType="fitXY"/>
 
         <View
             android:id="@+id/viewDetail"

@@ -20,6 +20,7 @@ class MovieDetailPresenter(
                     showCasts(data.casts)
                     showCompanies(data.companies)
                     showRecommendations(data.recommendations)
+                    showVideos(data.trailer)
                     hideLoading()
                 }
             }

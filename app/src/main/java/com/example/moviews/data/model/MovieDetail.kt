@@ -9,7 +9,8 @@ data class MovieDetail(
     val genres: MutableList<Genre>,
     val companies: MutableList<Company>,
     val casts: MutableList<Cast>,
-    val recommendations: MutableList<Movie>
+    val recommendations: MutableList<Movie>,
+    val trailer: MutableList<Video>
 ) {
     constructor(jsonObject: JSONObject) : this(
         movies = Movie(jsonObject),
@@ -26,6 +27,10 @@ data class MovieDetail(
         recommendations = jsonObject
             .getJSONObject(Constant.BASE_RECOMMEND)
             .getString(Movie.MOVIE_RESULTS)
-            .parseJsonToObject<Movie>()
+            .parseJsonToObject<Movie>(),
+        trailer = jsonObject
+            .getJSONObject(Constant.BASE_VIDEO)
+            .getString(Movie.MOVIE_RESULTS)
+            .parseJsonToObject<Video>()
     )
 }
